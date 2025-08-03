@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #my-div {
+      width: 300px;
+      height: 150px;
+      padding: 20px;
+      background-color: lightgray;
+      border: 2px solid #000;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    input, button {
+      margin: 5px 0;
+      display: block;
+    }
+  </style>
+<body>
+     <h2>Control the Box</h2>
+  <label>Enter Background Color:</label>
+  <input type="text" id="color" placeholder="e.g. red, blue">
+
+  <label>Enter Text Content:-</label>
+  <input type="text" id="text" placeholder="Type some text...">
+  <button id="change">Change Background</button>
+  <button id="update">Update Text</button>
+  <div id="my-div">This is the initial content.</div>
+</body>
+</html>
+
+<script>
+    const div = document.getElementById("my-div");
+    const colorInput = document.getElementById("color");
+    const textInput = document.getElementById("text");
+    const bgButton = document.getElementById("change");
+    const textButton = document.getElementById("update");
+   function isValidColor(color) {
+      const s = new Option().style;
+      s.color = color;
+      return s.color !== "";
+    } 
+
+    bgButton.addEventListener("click", function () {
+      const colorValue = colorInput.value.trim();
+      if (isValidColor(colorValue)) {
+        div.style.backgroundColor = colorValue
+      } else {
+        alert("Invalid color name!");
+      }
+    })
+   textButton.addEventListener("click", function () {
+      const textValue = textInput.value.trim()
+      if (textValue === "") {
+        alert("Please enter some text")
+      } else {
+        div.textContent = textValue;
+      }
+    })
+</script>
