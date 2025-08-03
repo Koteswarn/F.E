@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add List Items with Style</title>
+  <style>
+    .bold-blue {
+      font-weight: bold;
+      color: blue;
+    }
+
+    .italic-red {
+      font-style: italic;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>My List</h2>
+  <ul id="my-list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <button id="add-btn">Add Item</button>
+
+  <script>
+    const ul = document.querySelector("#my-list");
+    const button = document.querySelector("#add-btn");
+
+    button.addEventListener("click", function () {
+      
+      const itemCount = ul.children.length + 1;
+
+     
+      const newLi = document.createElement("li");
+      newLi.textContent = "New Item " + itemCount;
+
+      if (itemCount % 2 === 1) {
+        newLi.classList.add("bold-blue");
+      } else {
+        newLi.classList.add("italic-red");
+      }
+                         
+      ul.appendChild(newLi);
+    });
+  </script>
+
+</body>
+</html>
